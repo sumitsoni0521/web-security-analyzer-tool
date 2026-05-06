@@ -165,7 +165,7 @@ Final Score = Website Safety Percentage
 
 
 ### 🔐 SSL & Vulnerability Analysis
-![Anlysis](screenshots/Anslyze_result.png)
+![Anlysis](screenshots/Analyze_result.png)
 
 
 ### 📄 PDF Report Generation
