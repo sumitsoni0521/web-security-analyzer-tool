@@ -160,44 +160,17 @@ Final Score = Website Safety Percentage
 
 # 📷 Project Screenshots
 
-## 🖥 Dashboard Interface
-
-Add Screenshot Here:
-![Main dashboard](screenshorts/Screenshot 3.png)
+### 🖥 Dashboard Interface
+![Main Dashboard](screenshots/dashboard.png)
 
 
----
-
-## 🔐 SSL & Vulnerability Analysis
-
-Add Screenshot Here:
+### 🔐 SSL & Vulnerability Analysis
+![Anlysis](screenshots/Anslyze_result.png)
 
 
-screenshorts/Screenshot 1.png
+### 📄 PDF Report Generation
 
-
-Example Markdown:
-
-```markdown
-![Scan Result](screenshots/Screenshot 1.png)
-```
-
----
-
-## 📄 PDF Report Generation
-
-Add Screenshot Here:
-
-screenshorts/Screenshot 2.png
-
-
-Example Markdown:
-
-```markdown
-![PDF Report](screenshots/Screenshot 2.png)
-```
-
----
+![Report](screenshots/pdf_report.png)
 
 # 📈 Sample Output
 
