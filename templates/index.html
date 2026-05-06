@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Website Security Analysis Tool</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0f172a;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+      }
+
+      .container {
+        width: 85%;
+        margin: auto;
+        padding-top: 30px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #38bdf8;
+      }
+
+      .form-box {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      input[type="text"] {
+        width: 60%;
+        padding: 12px;
+        border-radius: 6px;
+        border: none;
+        font-size: 15px;
+      }
+
+      input[type="submit"] {
+        padding: 12px 25px;
+        border: none;
+        background: #22c55e;
+        color: white;
+        font-size: 15px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background: #16a34a;
+      }
+
+      .dashboard {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .card {
+        background: #1e293b;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .card h3 {
+        margin-top: 0;
+        color: #facc15;
+      }
+
+      .safe {
+        color: #22c55e;
+      }
+
+      .danger {
+        color: #ef4444;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        padding: 4px 0;
+      }
+
+      .score-box {
+        text-align: center;
+        font-size: 25px;
+        margin-top: 20px;
+        background: #1e293b;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🔐 Website Security Analysis Tool</h1>
+
+      <div class="form-box">
+        <form method="POST">
+          <input
+            type="text"
+            name="url"
+            placeholder="Enter Website URL (https://example.com)"
+            required
+          />
+          <input type="submit" value="Scan Website" />
+        </form>
+      </div>
+
+      {% if score %}
+
+      <div class="score-box"><b>Website Safety Score :</b> {{score}}%</div>
+
+      <div class="dashboard">
+        <!-- SSL Card -->
+        <div class="card">
+          <h3>SSL Information</h3>
+
+          <p>
+            SSL Status : {% if ssl %}
+            <span class="safe">Secure</span>
+            {% else %}
+            <span class="danger">Not Secure</span>
+            {% endif %}
+          </p>
+
+          <p>Issuer : {{ssl_data.issuer}}</p>
+          <p>Expiry Date : {{ssl_data.expiry_date}}</p>
+          <p>Days Remaining : {{ssl_data.days_remaining}}</p>
+        </div>
+
+        <!-- Vulnerability Card -->
+        <div class="card">
+          <h3>Vulnerability Status</h3>
+
+          <p>
+            SQL Injection : {% if sql %}
+            <span class="danger">Vulnerable</span>
+            {% else %}
+            <span class="safe">Safe</span>
+            {% endif %}
+          </p>
+
+          <p>
+            XSS Risk : {% if xss %}
+            <span class="danger">Vulnerable</span>
+            {% else %}
+            <span class="safe">Safe</span>
+            {% endif %}
+          </p>
+        </div>
+
+        <!-- Open Ports -->
+        <div class="card">
+          <h3>Open Ports</h3>
+          <ul>
+            {% for p in ports %}
+            <li>Port: {{p.port}} ({{p.service}})</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <!-- Headers -->
+        <div class="card">
+          <h3>Security Headers</h3>
+          <ul>
+            {% for key,value in headers.items() %}
+            <li>{{key}} : {{value}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <!-- Subdomains -->
+        <div class="card">
+          <h3>Subdomains Found</h3>
+          <ul>
+            {% for s in subs %}
+            <li>{{s}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <!-- WHOIS -->
+        <div class="card">
+          <h3>WHOIS Information</h3>
+          <ul>
+            {% for key, value in whois.items() %} {% if key == "Name Servers" %}
+            <li><b>{{key}}</b> :</li>
+            <ul>
+              {% for ns in value %}
+              <li>{{ns}}</li>
+              {% endfor %}
+            </ul>
+            {% else %}
+            <li><b>{{key}}</b> : {{value}}</li>
+            {% endif %} {% endfor %}
+          </ul>
+        </div>
+
+        <div style="text-align: right; margin-top: 20px">
+          <a href="/download_report">
+            <button
+              style="
+                padding: 10px 20px;
+                background: #3b82f6;
+                border: none;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Download Security Report
+            </button>
+          </a>
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+  </body>
+</html>
