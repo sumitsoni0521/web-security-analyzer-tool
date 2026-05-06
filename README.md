@@ -164,7 +164,7 @@ Final Score = Website Safety Percentage
 
 Add Screenshot Here:
 
-screenshots/Screenshot 3.png
+screenshorts/Screenshot 3.png
 
 Example Markdown:
 
@@ -179,7 +179,7 @@ Example Markdown:
 Add Screenshot Here:
 
 
-screenshots/Screenshot 1.png
+screenshorts/Screenshot 1.png
 
 
 Example Markdown:
@@ -194,7 +194,7 @@ Example Markdown:
 
 Add Screenshot Here:
 
-screenshots/Screenshot 2.png
+screenshorts/Screenshot 2.png
 
 
 Example Markdown:
