@@ -163,14 +163,8 @@ Final Score = Website Safety Percentage
 ## 🖥 Dashboard Interface
 
 Add Screenshot Here:
+![Main dashboard](screenshorts/Screenshot 3.png)
 
-screenshorts/Screenshot 3.png
-
-Example Markdown:
-
-```markdown
-![Dashboard](screenshots/Screenshot 3.png)
-```
 
 ---
 
